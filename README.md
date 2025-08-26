@@ -14,6 +14,6 @@
 
 **TECHSTACK** 
 
-Backend: Java (Spring Boot / Core Java with JDBC)
-Database: MySQL for secure and structured data storage
-Frontend: ReactJS for an interactive dashboard
+* Backend: Java (Spring Boot / Core Java with JDBC)
+* Database: MySQL for secure and structured data storage
+* Frontend: ReactJS for an interactive dashboard
