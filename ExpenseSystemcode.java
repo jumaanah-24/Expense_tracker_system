@@ -1,19 +1,21 @@
 import java.util.ArrayList;
-import java.util.List;
+import java.util.List;//they allow to store and manage multiple Expense
 import java.util.Scanner;
 
-// ------------------- Expense Class -------------------
+// ------------ Expense Class ------------
 class Expense {
     private int id;
     private String description;
     private double amount;
 
     public Expense(int id, String description, double amount) {
+        //method to create objects
+        //assigns the value passed as the instance variable
         this.id = id;
         this.description = description;
         this.amount = amount;
     }
-
+//getter method
     public int getId() {
         return id;
     }
@@ -32,15 +34,18 @@ class Expense {
     }
 }
 
-// ------------------- ExpenseService Class -------------------
+// -----------ExpenseService Class ------------
 class ExpenseService {
-    private List<Expense> expenses = new ArrayList<>();
+    private List<Expense> expenses = new ArrayList<>();//list to store all expense , intialize as empty array
     private int idCounter = 1;
 
     // Add expense
     public void addExpense(String description, double amount) {
         Expense expense = new Expense(idCounter++, description, amount);
-        expenses.add(expense);
+        //creates new expense objects
+        //idCounter++ assigns the current ID then increments the next one.
+
+        expenses.add(expense);   //add expense to the list
         System.out.println("✅ Expense added successfully!");
     }
 
@@ -60,22 +65,22 @@ class ExpenseService {
     public void calculateTotal() {
         double total = 0;
         for (Expense expense : expenses) {
-            total += expense.getAmount();
+            total += expense.getAmount();//adds amt of each expense to total
         }
         System.out.println("💰 Total Expenses: ₹" + total);
     }
 
     // Delete expense by ID
     public void deleteExpense(int id) {
-        Expense toRemove = null;
-        for (Expense expense : expenses) {
+        Expense toRemove = null; //temporary variable to find the expense to delete.
+        for (Expense expense : expenses) { //searches for expense with matching ID
             if (expense.getId() == id) {
                 toRemove = expense;
                 break;
             }
         }
 
-        if (toRemove != null) {
+        if (toRemove != null) { //if expense found ,removed
             expenses.remove(toRemove);
             System.out.println("🗑️ Expense deleted successfully.");
         } else {
@@ -84,17 +89,17 @@ class ExpenseService {
     }
 }
 
-// ------------------- ExpenseTrackerApp Class -------------------
+// --------- ExpenseTrackerApp Class -----------
 class ExpenseTrackerApp {
     private ExpenseService expenseService;
     private Scanner scanner;
 
-    public ExpenseTrackerApp() {
+    public ExpenseTrackerApp() { //constructor
         expenseService = new ExpenseService();
         scanner = new Scanner(System.in);
     }
 
-    public void start() {
+    public void start() { //main loop - shows menu 
         int choice;
         do {
             System.out.println("\n=== Expense Tracker Menu ===");
@@ -105,10 +110,10 @@ class ExpenseTrackerApp {
             System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
 
-            choice = scanner.nextInt();
+            choice = scanner.nextInt(); //reads user choice
             scanner.nextLine(); // consume newline
 
-            switch (choice) {
+            switch (choice) { //action to perform based on user choice
                 case 1 -> addExpense();
                 case 2 -> expenseService.viewExpenses();
                 case 3 -> expenseService.calculateTotal();
@@ -116,7 +121,8 @@ class ExpenseTrackerApp {
                 case 5 -> System.out.println("Exiting... Goodbye!");
                 default -> System.out.println("Invalid choice! Try again.");
             }
-        } while (choice != 5);
+        } while (choice != 5); //do-while keeps repeating until user chooses case 5
+    }
     }
 
     private void addExpense() {
@@ -136,10 +142,10 @@ class ExpenseTrackerApp {
     }
 }
 
-// ------------------- Main Class -------------------
+// ------------Main Class ----------
 public class Main {
     public static void main(String[] args) {
-        ExpenseTrackerApp app = new ExpenseTrackerApp();
-        app.start();
+        ExpenseTrackerApp app = new ExpenseTrackerApp(); //creates new object and calls the constructor 
+        app.start(); //calls the method 
     }
 }
