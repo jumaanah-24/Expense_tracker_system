@@ -46,7 +46,7 @@ class ExpenseService {
         //idCounter++ assigns the current ID then increments the next one.
 
         expenses.add(expense);   //add expense to the list
-        System.out.println("✅ Expense added successfully!");
+        System.out.println(" Expense added successfully!");
     }
 
     // View expenses
@@ -67,7 +67,7 @@ class ExpenseService {
         for (Expense expense : expenses) {
             total += expense.getAmount();//adds amt of each expense to total
         }
-        System.out.println("💰 Total Expenses: ₹" + total);
+        System.out.println(" Total Expenses: ₹" + total);
     }
 
     // Delete expense by ID
@@ -82,9 +82,9 @@ class ExpenseService {
 
         if (toRemove != null) { //if expense found ,removed
             expenses.remove(toRemove);
-            System.out.println("🗑️ Expense deleted successfully.");
+            System.out.println("Expense deleted successfully.");
         } else {
-            System.out.println("⚠️ Expense ID not found.");
+            System.out.println(" Expense ID not found.");
         }
     }
 }
@@ -149,3 +149,4 @@ public class Main {
         app.start(); //calls the method 
     }
 }
+
